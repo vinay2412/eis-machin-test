@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.auth.getAll().subscribe((data: any) => {
       this.items = data.data;
-      console.log(this.items);
     });
   }
 
@@ -39,12 +38,6 @@ export class DashboardComponent implements OnInit {
     }
   }
   remove() {
-    // auto close alert if required
     this.message = false;
   }
-
-  // logout() {   localStorage.removeItem('user');
-  //         this.userSubject.next(null);
-  //         this.router.navigate(['/account/login']);
-  //     }
 }

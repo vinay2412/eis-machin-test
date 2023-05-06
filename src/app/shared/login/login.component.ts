@@ -27,7 +27,7 @@ export class LoginComponent {
     console.log(this.form.value);
     this.auth.login(this.form.value).subscribe((res) => {
       if (res.status == 1) {
-        console.log(res);
+        console.log('User login successfully!')
         this.router.navigateByUrl('/dashboard');
       } else {
         console.log(res);

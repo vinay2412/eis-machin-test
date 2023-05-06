@@ -19,7 +19,7 @@ export class ViewComponent implements OnInit {
     let user_id = this.router.snapshot.params['itemId'];
     this.auth.find(user_id).subscribe((data: any) => {
       this.user = data.data;
-      console.log(data);
+      console.log('User View successfully!')
     });
   }
 
