@@ -1,36 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Item } from './item';
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public apiURL =
-    'https://devrunner.co.in/machine_test/index.php/web_api/Users';
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
+  private apiURL =
+    "https://devrunner.co.in/machine_test/index.php/web_api/Users";
 
   constructor(private httpClient: HttpClient) {}
 
   getAll() {
-    return this.httpClient
-      .get(this.apiURL + '/Users')
-      .pipe(catchError(this.errorHandler));
+    return this.httpClient.get(this.apiURL);
   }
 
   post(post: Item) {
-    return this.httpClient
-      .post<Item>(
-        this.apiURL + '/Register',
-        JSON.stringify(post),
-        this.httpOptions
-      )
-      .pipe(catchError(this.errorHandler));
+    return this.httpClient.post<Item>(
+      this.apiURL + '/Register',
+      JSON.stringify(post)
+    );
   }
 
   login(Item: { user_email: string; user_pwd: string }) {
@@ -42,39 +32,24 @@ export class AuthService {
           `&user_pwd=` +
           Item.user_pwd
       )
-      .pipe(catchError(this.errorHandler));
   }
 
   find(user_id: number) {
-    return this.httpClient
-      .get<any>(this.apiURL + '/user_detail?' + 'user_id=' + user_id)
-      .pipe(catchError(this.errorHandler));
+    return this.httpClient.get<any>(
+      this.apiURL + '/user_detail?'
+      + 'user_id=' + user_id
+    );
   }
 
   update(Item: any) {
-    return this.httpClient
-      .get<Item>(this.apiURL + '/update_user')
-      .pipe(catchError(this.errorHandler));
+    return this.httpClient.get<Item>(
+      this.apiURL + '/update_user');
   }
 
   delete(user_id: number) {
-    return this.httpClient
-      .get(this.apiURL + '/remove_user' + user_id)
-      .pipe(catchError(this.errorHandler));
-  }
-
-  errorHandler(error: {
-    error: { message: string };
-    status: string;
-    message: string;
-  }) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    console.log(errorMessage);
-    return throwError(errorMessage);
+    return this.httpClient.get(
+      this.apiURL + '/remove_user'
+      + user_id);
   }
 }
+

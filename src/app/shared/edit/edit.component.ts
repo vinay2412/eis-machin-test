@@ -48,7 +48,7 @@ export class EditComponent {
     this.auth.update(this.form.value).subscribe((res) => {
       Swal.fire('Updated Successfully!');
       this.router.navigateByUrl('/dashboard');
-      console.log('User Updated successfully!')
+      console.log('Updated successfully!')
     });
   }
   changeuser_gender(e: any) {}

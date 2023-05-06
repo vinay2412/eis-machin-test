@@ -18,7 +18,6 @@ export class LoginComponent {
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
       ]),
-
       user_pwd: new FormControl('', Validators.required),
     });
   }
@@ -27,7 +26,7 @@ export class LoginComponent {
     console.log(this.form.value);
     this.auth.login(this.form.value).subscribe((res) => {
       if (res.status == 1) {
-        console.log('User login successfully!')
+        console.log('login successfully!')
         this.router.navigateByUrl('/dashboard');
       } else {
         console.log(res);
@@ -38,7 +37,6 @@ export class LoginComponent {
     });
   }
   remove() {
-    // auto close alert if required
     this.message = false;
   }
 }

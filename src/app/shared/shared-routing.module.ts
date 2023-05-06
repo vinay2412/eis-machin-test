@@ -7,16 +7,16 @@ import { RegisterComponent } from './register/register.component';
 import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
-  { path:'', redirectTo: '/register', pathMatch: 'full'},
-  { path:'register', component: RegisterComponent},
-  { path:'login', component: LoginComponent},
-  { path:'dashboard', component: DashboardComponent},
-  { path:'edit/:itemId', component: EditComponent},
-  { path:'view/:itemId', component: ViewComponent}
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'edit/:itemId', component: EditComponent },
+  { path: 'view/:itemId', component: ViewComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SharedRoutingModule { }
+export class SharedRoutingModule {}

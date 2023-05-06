@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-primary">
   <div class="container">
     <h1 style="color: white">DASHBOARD</h1>
-    <button type="button" class="btn btn-danger" (click)="logout()">
+    <button type="button" class="btn btn-primary" (click)="logout()">
       Logout
     </button>
     <div
@@ -21,7 +21,7 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid img" style="width: 100%">
+<div class="container-fluid img" style="width: 100%" >
   <div class="container pt-4">
     <table class="table table-hover table-info table-striped">
       <thead class="table-dark">
@@ -49,13 +49,11 @@
           <td>{{ item.user_satus }}</td>
           <td>
             <a
-              href="#"
               [routerLink]="['/edit/', item.user_id]"
               class="btn btn-primary mx-2"
               >Edit</a
             >
             <a
-              href="#"
               [routerLink]="['/view/', item.user_id]"
               class="btn btn-primary"
               >View</a
