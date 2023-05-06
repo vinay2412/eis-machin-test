@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import {AuthService} from '../auth.service'
-import {Item} from '../item'
+import { AuthService } from '../auth.service';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  public items : any;
+  public items: any;
   message: boolean = false;
 
-  constructor(public auth: AuthService, public router:Router) { }
+  constructor(public auth: AuthService, public router: Router) {}
 
   ngOnInit(): void {
     this.auth.getAll().subscribe((data: any) => {
-      this.items= data.data;
+      this.items = data.data;
       console.log(this.items);
     });
   }
@@ -27,17 +27,14 @@ export class DashboardComponent implements OnInit {
   }
 
   deletePost(user_id: number, user_name: string) {
-    if (
-      confirm('Do you really want to delete :'+user_id)
-    ) {
+    if (confirm('Do you really want to delete :' + user_id)) {
       this.auth.delete(user_id).subscribe((res) => {
-        this.items = this.items.filter((item:any) => item.user_id !== user_id)
+        this.items = this.items.filter((item: any) => item.user_id !== user_id);
         if ((this.message = true)) {
           setTimeout(() => this.remove(), 3000);
-        console.log('User Deleted successfully!');
-        this.message = true;
+          console.log('User Deleted successfully!');
+          this.message = true;
         }
-
       });
     }
   }
@@ -47,7 +44,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // logout() {   localStorage.removeItem('user');
-    //         this.userSubject.next(null);
-    //         this.router.navigate(['/account/login']);
-    //     }
+  //         this.userSubject.next(null);
+  //         this.router.navigate(['/account/login']);
+  //     }
 }

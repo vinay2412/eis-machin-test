@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service'
+import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
 })
 export class EditComponent {
   public item: any;
   public form: FormGroup;
   user_id: number;
 
-  constructor(public auth: AuthService, public router: Router, private routes: ActivatedRoute,) {
+  constructor(
+    public auth: AuthService,
+    public router: Router,
+    private routes: ActivatedRoute
+  ) {
     this.user_id = this.routes.snapshot.params['itemId'];
     this.auth.find(this.user_id).subscribe((res) => {
       this.item = res.data[0];
@@ -35,7 +39,7 @@ export class EditComponent {
       ]),
       user_phone_no: new FormControl('', Validators.required),
       user_pwd: new FormControl('', Validators.required),
-      user_gender: new FormControl('', Validators.required)
+      user_gender: new FormControl('', Validators.required),
     });
   }
 
@@ -46,6 +50,5 @@ export class EditComponent {
       this.router.navigateByUrl('/dashboard');
     });
   }
-  changeuser_gender(e: any) {
-  }
+  changeuser_gender(e: any) {}
 }
