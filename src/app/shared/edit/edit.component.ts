@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -46,6 +46,7 @@ export class EditComponent {
   submit() {
     console.log(this.form.value);
     this.auth.update(this.form.value).subscribe((res) => {
+      console.log(res);
       Swal.fire('Updated Successfully!');
       this.router.navigateByUrl('/dashboard');
       console.log('Updated successfully!')
