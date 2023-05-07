@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
         this.items = this.items.filter((item: any) => item.user_id !== user_id);
         if ((this.message = true)) {
           setTimeout(() => this.remove(), 3000);
-          console.log('User Deleted successfully!');
+          console.log('Deleted successfully!');
           this.message = true;
         }
       });
