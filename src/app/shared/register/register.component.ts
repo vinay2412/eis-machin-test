@@ -19,7 +19,7 @@ export class RegisterComponent {
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
       ]),
-      user_phone_no: new FormControl('', Validators.required),
+      user_contact_no: new FormControl('', Validators.required),
       user_pwd: new FormControl('', Validators.required),
       user_gender: new FormControl('', Validators.required),
     });
